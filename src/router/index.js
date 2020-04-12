@@ -5,16 +5,28 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/',
-        name: 'Home',
-        meta: {layout: 'main'},
-        component: () => import('../views/Home.vue')
+        path: '/register',
+        name: 'register',
+        meta: {layout: 'empty'},
+        component: () => import('../views/Register.vue')
     },
     {
         path: '/login',
         name: 'login',
         meta: {layout: 'empty'},
         component: () => import('../views/Login.vue')
+    },
+    {
+        path: '/',
+        name: 'Home',
+        meta: {layout: 'main'},
+        component: () => import('../views/Home.vue')
+    },
+    {
+        path: '/categories',
+        name: 'categories',
+        meta: {layout: 'main'},
+        component: () => import('../views/Categories.vue')
     },
     {
         path: '/detail',
@@ -45,12 +57,6 @@ const routes = [
         name: 'record',
         meta: {layout: 'main'},
         component: () => import('../views/Record.vue')
-    },
-    {
-        path: '/register',
-        name: 'register',
-        meta: {layout: 'empty'},
-        component: () => import('../views/Register.vue')
     }
 ]
 
