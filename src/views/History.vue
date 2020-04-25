@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="page-title">
-            <h3>История записей</h3>
+            <h3>{{ 'History_Records' | localize }}</h3>
         </div>
 
         <div class="history-chart">
@@ -11,9 +11,9 @@
         <Loader v-if="loading" />
 
         <p class="center" v-else-if="!records.length">
-            Записей пока нет.
+            {{ 'History_No_records_yet' | localize }}.
             <router-link to="/record">
-                Добавить новую запись.
+                {{ 'History_Add_new_one' | localize }}.
             </router-link>
         </p>
 
@@ -24,8 +24,8 @@
                     v-model="page"
                     :page-count="pageCount"
                     :click-handler="pageChangeHandler"
-                    :prev-text="'Назад'"
-                    :next-text="'Вперед'"
+                    :prev-text=paginate.prev
+                    :next-text=paginate.next
                     :container-class="'pagination'"
                     :page-class="'waves-effect'"
             />
@@ -37,6 +37,7 @@
     import HistoryTable from "../components/HistoryTable"
     import paginationMixin from '../mixins/pagination.mixin'
     import {Pie} from 'vue-chartjs'
+    import localizeFilter from "../filters/localize.filter"
 
     export default {
         name: "History",
@@ -44,7 +45,11 @@
         mixins: [paginationMixin],
         data: () => ({
             loading: true,
-            records: []
+            records: [],
+            paginate: {
+                prev: localizeFilter('History_Paginate_Next'),
+                next: localizeFilter('History_Paginate_Prev')
+            }
         }),
         async mounted() {
             this.records = await this.$store.dispatch('fetchRecords')
@@ -62,7 +67,7 @@
                         categoryName: categories
                             .find(c => c.id === record.categoryId).title,
                         typeClass: record.type === 'income' ? 'green' : 'red',
-                        typeText: record.type === 'income' ? 'Доход' : 'Расход',
+                        typeText: record.type === 'income' ? localizeFilter('History_Income') : localizeFilter('History_Outcome'),
                     }
                 }))
 
@@ -70,7 +75,7 @@
                     labels: categories.map(c => c.title),
                     datasets: [
                         {
-                            label: 'Расходы по категориям',
+                            label: localizeFilter('History_Outcomes_per_category'),
                             backgroundColor: '#f87979',
                             data: categories.map(c => {
                                 return this.records.reduce((total, r) => {
