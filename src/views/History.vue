@@ -65,6 +65,17 @@
             this.loading = false
         },
         methods: {
+            // rand() {
+            //     return Math.random() * 256
+            // },
+            // generateColors() {
+            //     const res = []
+            //     this.categories.forEach(category => {
+            //         // res.push(`rgba(${this.rand()}, ${this.rand()}, ${this.rand()}, 0.2)`)
+            //         res.push('rgba(255, 99, 132, 0.2)')
+            //     })
+            //     return res
+            // },
             setup(categories) {
                 this.setupPagination(this.records.map(record => {
                     return {
@@ -81,7 +92,6 @@
                     datasets: [
                         {
                             label: localizeFilter('History_Outcomes_per_category'),
-                            backgroundColor: '#f87979',
                             data: categories.map(c => {
                                 return this.records.reduce((total, r) => {
                                     if (r.categoryId === c.id && r.type === 'outcome') {
@@ -89,7 +99,16 @@
                                     }
                                     return total
                                 }, 0)
-                            })
+                            }),
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                            ]
+                            // backgroundColor: this.generateColors()
                         }
                     ]
                 })
