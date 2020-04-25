@@ -89,5 +89,7 @@
 </script>
 
 <style scoped>
-
+    .progress {
+        background-color: #e7eaea
+    }
 </style>
