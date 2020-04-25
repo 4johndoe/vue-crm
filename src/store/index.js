@@ -21,9 +21,30 @@ export default new Vuex.Store({
     },
     actions: {
         async fetchCurrency() {
-            const key = process.env.VUE_APP_FIXER
-            const res = await fetch(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`)
-            return await res.json()
+            const res = await fetch('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+            const array = await res.json()
+
+            const base = 'UAH'
+            const date = new Intl
+                .DateTimeFormat('ru-RU', {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric'
+                })
+                .format(new Date())
+                .split('.').reverse().join('-')
+            const rates = {}
+            const currencies = array
+                .filter(item => item.base_ccy === base)
+                .forEach(element => {
+                    rates[element.ccy] = parseFloat(element.sale)
+                })
+
+            return {
+                base,
+                date,
+                rates
+            }
         }
     },
     getters: {

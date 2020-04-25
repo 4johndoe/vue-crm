@@ -23,16 +23,16 @@
         name: "HomeBill",
         props: ['rates'],
         data: () => ({
-            currencies: ['RUB', 'USD', 'EUR']
+            currencies: ['UAH', 'USD', 'EUR']
         }),
         computed: {
             base() {
-                return this.$store.getters.info.bill / (this.rates['RUB'] / this.rates['EUR'])
+                return this.$store.getters.info.bill
             }
         },
         methods: {
             getCurrency(currency) {
-                return Math.floor(this.base * this.rates[currency])
+                return Math.floor(this.base / (this.rates[currency] || 1))
             }
         }
     }

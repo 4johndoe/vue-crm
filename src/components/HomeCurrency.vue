@@ -32,7 +32,7 @@
         name: "HomeCurrency",
         props: ['rates', 'date'],
         data: () => ({
-            currencies: ['RUB', 'USD', 'EUR']
+            currencies: ['RUR', 'USD', 'EUR']
         })
     }
 </script>
