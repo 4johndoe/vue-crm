@@ -1,7 +1,7 @@
 <template>
     <form class="card auth-card" @submit.prevent="submitHandler">
         <div class="card-content">
-            <span class="card-title">Домашняя бухгалтерия</span>
+            <span class="card-title">{{ 'Register_Title' | localize }}</span>
             <div class="input-field">
                 <input
                         id="email"
@@ -10,15 +10,15 @@
                         :class="{invalid: ($v.email.$dirty && !$v.email.required)
                                         || ($v.email.$dirty && !$v.email.email)}"
                 >
-                <label for="email">Email</label>
+                <label for="email">{{ 'Register_Email' | localize }}</label>
                 <small
                         class="helper-text invalid"
                         v-if="$v.email.$dirty && !$v.email.required"
-                >Поле Email не должно быть пустым</small>
+                >{{ 'Register_Email_required' | localize }}</small>
                 <small
                         class="helper-text invalid"
                         v-else-if="$v.email.$dirty && !$v.email.email"
-                >Введите правильный Email</small>
+                >{{ 'Register_Email_email' | localize }}</small>
             </div>
             <div class="input-field">
                 <input
@@ -28,15 +28,15 @@
                         :class="{invalid: ($v.password.$dirty && !$v.password.required)
                                         || ($v.password.$dirty && !$v.password.minLength)}"
                 >
-                <label for="password">Пароль</label>
+                <label for="password">{{ 'Register_Password' | localize }}</label>
                 <small
                         class="helper-text invalid"
                         v-if="$v.password.$dirty && !$v.password.required"
-                >Введите пароль</small>
+                >{{ 'Register_Password_required' | localize }}</small>
                 <small
                         class="helper-text invalid"
                         v-else-if="$v.password.$dirty && !$v.password.minLength"
-                >Слишком должен быть {{this.$v.password.$params.minLength.min}} символов, сейчас он {{password.length}}</small>
+                >{{ 'Register_Password_min_len' | localize }} {{this.$v.password.$params.minLength.min}} {{ 'Register_Password_curr_len' | localize }} {{password.length}}</small>
             </div>
             <div class="input-field">
                 <input
@@ -45,16 +45,16 @@
                         v-model.trim="name"
                         :class="{invalid: ($v.name.$dirty && !$v.name.required)}"
                 >
-                <label for="name">Имя</label>
+                <label for="name">{{ 'Register_Name' | localize }}</label>
                 <small
                         class="helper-text invalid"
                         v-if="$v.name.$dirty && !$v.name.required"
-                >Введите Ваше имя</small>
+                >{{ 'Register_Name_required' | localize }}</small>
             </div>
             <p>
                 <label>
                     <input type="checkbox" v-model="agree"/>
-                    <span>С правилами согласен</span>
+                    <span>{{ 'Register_Agree' | localize }}</span>
                 </label>
             </p>
         </div>
@@ -64,14 +64,14 @@
                         class="btn waves-effect waves-light auth-submit"
                         type="submit"
                 >
-                    Зарегистрироваться
+                    {{ 'Register_Register' | localize }}
                     <i class="material-icons right">send</i>
                 </button>
             </div>
 
             <p class="center">
-                Уже есть аккаунт?
-                <router-link to="/login">Войти!</router-link>
+                {{ 'Register_Already_has_acc' | localize }}?
+                <router-link to="/login">{{ 'Register_Enter' | localize }}!</router-link>
             </p>
         </div>
     </form>

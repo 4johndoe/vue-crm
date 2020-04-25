@@ -3,9 +3,9 @@
         <Loader v-if="loading" />
         <div v-else-if="record">
             <div class="breadcrumb-wrap">
-                <router-link to="/history" class="breadcrumb">История</router-link>
+                <router-link to="/history" class="breadcrumb">{{ 'Detail_History' | localize }}</router-link>
                 <a @click.prevent class="breadcrumb">
-                    {{ record.type === 'income' ? 'Доход' : 'Расход'}}
+                    {{ record.type === 'income' ? t.income : t.outcome }}
                 </a>
             </div>
             <div class="row">
@@ -15,9 +15,9 @@
                         'green': record.type === 'income'
                     }">
                         <div class="card-content white-text">
-                            <p>Описание: {{ record.description }}</p>
-                            <p>Сумма: {{ record.amount | currency }}</p>
-                            <p>Категория: {{ record.categoryName }}</p>
+                            <p>{{ 'Detail_Description' | localize }}: {{ record.description }}</p>
+                            <p>{{ 'Detail_Sum' | localize }}: {{ record.amount | currency }}</p>
+                            <p>{{ 'Detail_Category' | localize }}: {{ record.categoryName }}</p>
 
                             <small>{{ record.data | date('datetime') }}</small>
                         </div>
@@ -25,16 +25,22 @@
                 </div>
             </div>
         </div>
-        <p class="center" v-else>Записть с id = {{$route.params.id}} не найдена.</p>
+        <p class="center" v-else>{{ 'Detail_Record_with' | localize }} id = {{$route.params.id}} {{ 'Detail_Not_found' | localize }}.</p>
     </div>
 </template>
 
 <script>
+    import localizeFilter from "../filters/localize.filter"
+
     export default {
         name: "Detail-Record",
         data: () => ({
             loading: true,
-            record: null
+            record: null,
+            t: {
+                income: localizeFilter('Detail_Income'),
+                outcome: localizeFilter('Detail_Outcome')
+            }
         }),
         async mounted() {
             const id = this.$route.params.id
