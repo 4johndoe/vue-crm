@@ -87,5 +87,7 @@
   "Register_Register": "Register",
   "Register_Already_has_acc": "Already has account",
   "Register_Already_has_no_acc": "Still no account",
-  "Register_Enter": "Login"
+  "Register_Enter": "Login",
+  "Navbar_Profile": "Profile",
+  "Navbar_Exit": "Exit"
 }

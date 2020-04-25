@@ -87,5 +87,7 @@
   "Register_Register": "Зарегистрироваться",
   "Register_Already_has_acc": "Уже есть аккаунт",
   "Register_Already_has_no_acc": "Нет аккаунта",
-  "Register_Enter": "Войти"
+  "Register_Enter": "Войти",
+  "Navbar_Profile": "Профиль",
+  "Navbar_Exit": "Выйти"
 }
