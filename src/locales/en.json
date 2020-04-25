@@ -49,6 +49,7 @@
   "Categories_Title": "Categories",
   "Error_Record_Not_enough_money": "No categories yet",
   "Error_MainLayout_Smt_going_wrong": "Something going wrong",
+  "Error_error": "Error",
   "CategoryCreate_Title": "Create",
   "CategoryCreate_Name": "Name",
   "CategoryCreate_Create_category_name": "Create category name",
@@ -89,5 +90,10 @@
   "Register_Already_has_no_acc": "Still no account",
   "Register_Enter": "Login",
   "Navbar_Profile": "Profile",
-  "Navbar_Exit": "Exit"
+  "Navbar_Exit": "Exit",
+  "Login": "First login",
+  "Logout": "Logout",
+  "Messages_UserNotFound": "User not found",
+  "Messages_WrongPassword": "Wrong password",
+  "Messages_EmailAlreadyUsed": "Email already used"
 }

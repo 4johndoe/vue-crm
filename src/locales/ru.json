@@ -47,6 +47,7 @@
   "Record_Record_successfully_created": "Запись успешно создана",
   "Error_Record_Not_enough_money": "Недостаточно средств на счете | нехватает",
   "Error_MainLayout_Smt_going_wrong": "Что-то пошло не так",
+  "Error_error": "Ошибка",
   "Categories_Title": "Категории",
   "Categories_No_categories_yet": "Категорий пока нет",
   "CategoryCreate_Title": "Создать",
@@ -89,5 +90,10 @@
   "Register_Already_has_no_acc": "Нет аккаунта",
   "Register_Enter": "Войти",
   "Navbar_Profile": "Профиль",
-  "Navbar_Exit": "Выйти"
+  "Navbar_Exit": "Выйти",
+  "Login": "Для начала войдите в систему",
+  "Logout": "Вы вышли из системы",
+  "Messages_UserNotFound": "Пользователь не найден",
+  "Messages_WrongPassword": "Неверный пароль",
+  "Messages_EmailAlreadyUsed": "Почта уже используется"
 }
